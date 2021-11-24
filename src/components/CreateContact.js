@@ -1,43 +1,51 @@
 import React, {useState} from 'react';
+import styles from '../CSS/styles.module.css'
 
 const CreateContact = (props) => {
 
-        const [newContactName, setNewContactName] = useState("")
-        const [newContactPhone, setNewContactPhone] = useState(0)
-        const [newContactEmail, setNewContactEmail] = useState("")
-        
+    const initialValues = {
+        name: '',
+        phone: 0,
+        email: ''
+    }
+
+    const [data, setData] = useState(initialValues)
+
+    const handleInputChange = (event) => {
+        setData({
+            ...data,
+            [event.target.name] : event.target.value
+        })
+    }
+
         const handleSubmit = (e) => {
             e.preventDefault();
-            props.callback(newContactName, newContactPhone, newContactEmail)
-            setNewContactName("")
-            setNewContactPhone("")
-            setNewContactEmail("")
+            props.callback(data.name, data.phone, data.email)
+            e.target.reset()
         }
 
-        const handleInputName = e => setNewContactName(e.target.value)
-        const handleInputPhone = e => setNewContactPhone(e.target.value)
-        const handleInputEmail = e => setNewContactEmail(e.target.value)
-
-    return ( <div>
-                <form onSubmit={handleSubmit}>
+    return ( <div className= {styles.containerForm}>
+                <form onSubmit={handleSubmit} className= {styles.form}>
+                <label htmlFor="Favorite">Nombre Completo</label>
                     <input
                     type="text"
-                    onChange={handleInputName}
-                    placeholder="Nombre Completo"
-                    value= {newContactName}
+                    onChange={handleInputChange}
+                    placeholder="Ej. Juanito Perez"
+                    name= "name"
                 />
+                <label htmlFor="Favorite">Telefono</label>
                 <input
                     type="tel"
-                    onChange={handleInputPhone}
-                    placeholder="Telefono"
-                    value= {newContactPhone}
+                    onChange={handleInputChange}
+                    placeholder="Ej. 0000000"
+                    name= "phone"
                 />
+                <label htmlFor="Favorite">Email</label>
                 <input
                     type="email"
-                    onChange={handleInputEmail}
-                    placeholder="Email"
+                    onChange={handleInputChange}
+                    placeholder="Ej. juanito@example.com"
                     name="email"
-                    value= {newContactEmail}
                 />
                 <button type="submit">Añadir nuevo Contacto</button>
                 </form>

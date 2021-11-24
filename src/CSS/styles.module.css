@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,500;1,200&family=Oswald:wght@200;400;600&family=Roboto:wght@100;300;400;500&family=Shadows+Into+Light&family=Shadows+Into+Light+Two&display=swap');
+
+
+/* font-family: 'Montserrat', sans-serif;
+font-family: 'Oswald', sans-serif;
+font-family: 'Roboto', sans-serif;
+font-family: 'Shadows Into Light', cursive;
+font-family: 'Shadows Into Light Two', cursive; */
+
+.container{
+    background: #9DBEB9;
+    width: 100%;
+    height: 100vh;
+    overflow: scroll;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Montserrat';
+    color: #194350;
+}
+
+header h2{
+    margin: 0.5em;
+}
+
+header h5{
+    margin: 0em;
+}
+
+.containerForm{
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5em;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 20em;
+    color: #194350;
+}
+
+.form button {
+    margin-top: 0.5em;
+    background: #FF8882;
+    cursor: pointer;
+    border: #FF8882 solid;
+    color: white;
+}
+
+.form button:hover{
+    background: #ff5d54;
+    border: #ff5d54 solid;
+}
+
+.form input {
+    border: #194350 solid 0.15em;
+    outline: none;
+}
+
+.form input:hover{
+    border: #ff5d54  solid 0.15em;
+}
+
+/* .containerTable{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
+.containerTable {
+    table-layout: fixed;
+    border-collapse: collapse;
+    text-align: center;
+    margin-top: 2em;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+
+  }
+
+  .containerTable tbody tr{
+    border: #194350 solid 0.1em;
+    height: 2.5em;
+  }
+
+  .containerTable thead tr{
+    background: #194350;
+    color: white;
+    border: #194350 solid 0.1em;
+  }
+  thead th:nth-child(1) {
+    width: 20%;
+  }
+  thead th:nth-child(2) {
+    width: 20%;
+    height: auto;
+  }
+  thead th:nth-child(3) {
+    width: 30%;
+    height: auto;
+  }
+  thead th:nth-child(4) {
+    width: 10%;
+  }
+  thead th:nth-child(5) {
+    width: 10%;
+  }
+  thead th:nth-child(6) {
+    width: 10%;
+  }
+
+
+
+
+  .containerFavoriteSection{
+      text-align: center;
+      margin-top: 1em;
+  }
+
+  .containerFavoriteSection label {
+      font-weight: bolder;
+  }
+
+  .buttonEdit, .buttonDelete{
+      background: none;
+      cursor: pointer;
+      border: #194350 solid 0.1em;
+      width: 2.4em;
+      height: 2em;
+  }
+

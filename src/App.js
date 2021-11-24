@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import './App.css';
+import styles from './CSS/styles.module.css';
 import ContactRow from './components/ContactRow';
 import ContactsBanner from './components/ContactsBanner';
 import CreateContact from './components/CreateContact';
 import FavoriteSection from './components/FavoriteSection';
+import Table from './components/Table';
 
 function App() {
 
@@ -13,12 +14,12 @@ function App() {
     name: "Julian Fonseca",
     phone: 0,
     email: "juli@gmail.com",
-    favorite: false
+    favorite: false,
   },{
     name: "Andres Sanchez",
     phone: 1,
     email: "andres@gmail.com",
-    favorite: true
+    favorite: true, 
   }
 ])
 
@@ -27,7 +28,16 @@ setContactItems(contactItems.map(
   c => (c.name === contact.name ? {...c,favorite: !c.favorite} : c)
 ))
 
-const contactTableRows = (favoriteValue) => 
+const deleteContact = contactName => {
+  const removeContact = [...contactItems].filter(contact => contact.name !== contactName)
+  alert("Se eliminara tu contacto")
+  setContactItems(removeContact)
+  }
+
+
+ 
+
+const contactTableRowsFavorite = (favoriteValue) => 
  contactItems
  .filter(contact => contact.favorite === favoriteValue)
  .map(contact => (
@@ -35,6 +45,19 @@ const contactTableRows = (favoriteValue) =>
    key= {contact.name}
    contact = {contact}
    toggleFavorite={toggleFavorite}
+   delete = {deleteContact}
+
+   />
+ ))
+
+ const contactTableRows = () => 
+ contactItems.map(contact => (
+   <ContactRow
+   key= {contact.name}
+   contact = {contact}
+   toggleFavorite={toggleFavorite}
+   delete = {deleteContact}
+ 
    />
  ))
 
@@ -48,9 +71,10 @@ const contactTableRows = (favoriteValue) =>
        favorite: false
      }])
    }else{
-     alert("el numero registrado ya existe en su libreta de contactos")
+     alert("El numero registrado ya existe en su libreta de contactos")
    }
  }
+
 
 
  useEffect(()=> {
@@ -63,7 +87,7 @@ const contactTableRows = (favoriteValue) =>
         name: "Julian Fonseca example",
         phone: 0,
         email: "juli@gmail.com",
-        favorite: false
+        favorite: false, 
       },{
         name: "Andres Sanchez example",
         phone: 1,
@@ -80,25 +104,10 @@ const contactTableRows = (favoriteValue) =>
  }, [contactItems])
 
   return (
-    <div>
-      <ContactsBanner
-      contactItems= {contactItems.length}
-      />
+    <div className= {styles.container}>
+      <ContactsBanner contactItems= {contactItems.length}/>
       <CreateContact callback = {createNewContact}/>
-      <table>
-      <thead>
-      <tr>
-          <th>Nombre Completo</th>
-          <th>Telefono</th>
-          <th>Email</th>
-          <th>Favorito</th>
-        </tr>
-      </thead>
-      <tbody>
-        {contactTableRows(false)}
-        {contactTableRows(true)}
-      </tbody>
-      </table>
+      <Table function = {contactTableRows()}/>
       <div>
         <FavoriteSection
         isChecked = {favorite}
@@ -108,19 +117,7 @@ const contactTableRows = (favoriteValue) =>
 
       {
         favorite && (
-          <table>
-            <thead>
-              <tr>
-                <th>Nombre Completo</th>
-                <th>Telefono</th>
-                <th>Email</th>
-                <th>Favorito</th>
-              </tr>
-            </thead>
-            <tbody>
-              {contactTableRows(true)}
-            </tbody>
-          </table>
+         <Table function = {contactTableRowsFavorite(true)}/>
         )
       }
     </div>
