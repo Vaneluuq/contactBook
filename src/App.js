@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import ContactRow from './components/ContactRow';
 import ContactsBanner from './components/ContactsBanner';
@@ -7,7 +7,7 @@ import FavoriteSection from './components/FavoriteSection';
 
 function App() {
 
-  const [favorite, setfavorite] = useState(true)
+  const [favorite, setfavorite] = useState(false)
 
   const [contactItems, setContactItems] = useState([{
     name: "Julian Fonseca",
@@ -50,8 +50,34 @@ const contactTableRows = (favoriteValue) =>
    }else{
      alert("el numero registrado ya existe en su libreta de contactos")
    }
-
  }
+
+
+ useEffect(()=> {
+   let data = localStorage.getItem("contacts")
+   if(data != null){
+     setContactItems(JSON.parse(data))
+   }else{
+     setContactItems([
+      {
+        name: "Julian Fonseca example",
+        phone: 0,
+        email: "juli@gmail.com",
+        favorite: false
+      },{
+        name: "Andres Sanchez example",
+        phone: 1,
+        email: "andres@gmail.com",
+        favorite: true
+      }
+     ])
+     setfavorite(true)
+   }
+ }, [])
+
+ useEffect(() => {
+   localStorage.setItem('contacts', JSON.stringify(contactItems))
+ }, [contactItems])
 
   return (
     <div>
