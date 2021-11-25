@@ -4,7 +4,7 @@ Aplicación creada en ReactJs que permite al usuario crear una libreta con sus c
 La aplicación hace uso del localStorage para el almacenamiento de la información.  
 
 ## Deploy
-La aplicación se desplego mediante Github Pages en:  [ContactBook](http://localhost:3000)
+La aplicación se desplego mediante Github Pages en:  [ContactBook](https://vaneluuq.github.io/contactBook/)
 
 
 
