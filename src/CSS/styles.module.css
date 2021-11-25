@@ -135,3 +135,9 @@ header h5{
       height: 2em;
   }
 
+  .buttonDelete:hover, .buttonEdit:hover{
+    background: #194350;
+    color: white;
+  }
+
+
