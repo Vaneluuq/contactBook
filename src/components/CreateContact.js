@@ -6,7 +6,7 @@ const CreateContact = (props) => {
 
     const initialValues = {
         name: '',
-        phone: 0,
+        phone: '',
         email: '', 
         id : uuid()
     }
@@ -43,32 +43,32 @@ const CreateContact = (props) => {
                 <form onSubmit={handleSubmit} className= {styles.form}>
                 <label htmlFor="Favorite">Nombre Completo</label>
                     <input
+                    data-testid="filter-input-name"
                     id="name" 
                     type="text"
                     onChange={handleInputChange}
                      name= "name"
-                    //  value = {props.contactEditing === null ?  "" : data.name}
                      placeholder="Ej. Juanito Perez"
                     required
                 />
                 <label htmlFor="Favorite">Telefono</label>
                 <input
+                data-testid="filter-input-phone"
                     id="phone" 
                     type="tel"
                     onChange={handleInputChange}
                     placeholder="Ej. 0000000"
                     name= "phone"
-                    value = {props.contactEditing !== null ?  data.phone : "hola"}
                 />
                 <label htmlFor="Favorite">Email</label>
                 <input
+                    data-testid="filter-input-email"
                     id="email" 
                     type="email"
                     onChange={handleInputChange}
                     placeholder="Ej. juanito@example.com"
                     name="email"
                     required
-                    // value = {props.contactEditing === null ?  "" : data.email}
                 />
                 <button type="submit">{
                 props.contactEditing === null ?

@@ -4,7 +4,7 @@ import styles from '../CSS/styles.module.css'
 
 const Table = (props) => {
     return (   
-    <table className= {styles.containerTable}>
+    <table data-testid="my-table" className= {styles.containerTable}>
         <thead>
         <tr>
             <th>Nombre Completo</th>

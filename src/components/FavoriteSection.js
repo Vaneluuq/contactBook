@@ -6,6 +6,7 @@ const FavoriteSection = (props) => {
     <div className={styles.containerFavoriteSection}>
         <label htmlFor="Favorite">Ver mis contactos favoritos</label>
         <input
+        data-testid="favorite"
         type="checkbox"
         checked= {props.isChecked}
         onChange= {e => props.callback(e.target.checked)}

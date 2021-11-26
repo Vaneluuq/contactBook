@@ -14,13 +14,13 @@ function App() {
 
   const [contactItems, setContactItems] = useState([{
     name: "Julian Fonseca",
-    phone: 0,
+    phone: "123456",
     email: "juli@gmail.com",
     favorite: false,
     id: uuid()
   },{
     name: "Andres Sanchez",
-    phone: 1,
+    phone: "987654",
     email: "andres@gmail.com",
     favorite: true, 
     id: uuid()
@@ -36,7 +36,7 @@ const [contactEditing, setContactEditing] = useState(null);
 //Se establecen los valores que tendra el contacto tras un update
 const initialValues =  {
   name: '',
-  phone: 0,
+  phone: '',
   email: ''
 }
 const [edit, setEdit] = useState(initialValues);
@@ -75,7 +75,7 @@ const createNewContact = (contactName, contactPhone, contactEmail) => {
 
 
   
-// Funcion que marac un contacto como favorito
+// Funcion que marca un contacto como favorito
 const toggleFavorite = (contact) => 
 setContactItems(contactItems.map(
   c => (c.name === contact.name ? {...c,favorite: !c.favorite} : c)
@@ -96,7 +96,7 @@ const deleteContact = contactName => {
 })
 }
 
-
+// Se muestran los datos en pantalla 
 const contactTableRowsFavorite = (favoriteValue) => 
  contactItems
  .filter(contact => contact.favorite === favoriteValue)
@@ -122,9 +122,7 @@ const contactTableRowsFavorite = (favoriteValue) =>
  ))
 
 
-
-
-
+// Se obtienen y almacenan los datos en el localstorage
  useEffect(()=> {
    let data = localStorage.getItem("contacts")
    if(data != null){
@@ -155,14 +153,12 @@ const contactTableRowsFavorite = (favoriteValue) =>
  }, [contactItems])
 
 
-
-
-
-
   return (
     <div className= {styles.container}>
       <ContactsBanner contactItems= {contactItems.length}/>
-      {
+
+
+     {
         contactEditing !== null ? (
           <CreateContact
                 callback = {submitEdits}
@@ -179,16 +175,7 @@ const contactTableRowsFavorite = (favoriteValue) =>
           edit = {edit}
         />
         )
-      }
-
-
-
-
-
-
-
-  
-      
+      } 
 
       <Table function = {contactTableRows()}/>  
       
