@@ -51,7 +51,7 @@ const CreateContact = (props) => {
                      placeholder="Ej. Juanito Perez"
                     required
                 />
-                <label htmlFor="Favorite">Telefono</label>
+                <label htmlFor="Favorite">Teléfono</label>
                 <input
                 data-testid="filter-input-phone"
                     id="phone" 
@@ -60,7 +60,7 @@ const CreateContact = (props) => {
                     placeholder="Ej. 0000000"
                     name= "phone"
                 />
-                <label htmlFor="Favorite">Email</label>
+                <label htmlFor="Favorite">Correo electrónico</label>
                 <input
                     data-testid="filter-input-email"
                     id="email" 

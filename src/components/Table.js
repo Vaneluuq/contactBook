@@ -8,8 +8,8 @@ const Table = (props) => {
         <thead>
         <tr>
             <th>Nombre Completo</th>
-            <th>Telefono</th>
-            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Correo electrónico</th>
             <th>Favorito</th>
             <th>Editar</th>
             <th>Borrar</th>
